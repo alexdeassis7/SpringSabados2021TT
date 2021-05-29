@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd
+">
+	<!-- Aqui definimos el generador de Beans que es quien nos va a proporcionar 
+		los -->
+	<!-- objetos , esto seria una especie de contenedor que nos brindara los 
+		beans del tipo empleado -->
+
+
+	<!-- aqui ponemos un id que seria el "alias" o identificador para darle 
+		un nombre a nuestro bean -->
+	<!-- como asi tambien debemos especificar la ruta y la clase de la cual 
+		queremos que spring manipule los -->
+	<!-- objetos -->
+
+	<bean id="miEmpleado"
+		class="com.eduit.clase1.entidades.DirectorEmpleado">
+		<!-- inyectamos el informe en el constructor para la inyeccion e dependecias -->
+		<constructor-arg ref="miInforme"></constructor-arg>
+	</bean>
+
+	<bean id="miSecretarioEmpleado"
+		class="com.eduit.clase1.entidades.SecretarioEmpleado">
+<!-- 		property es el tap para usar inyeccion de dependencia con un setter  -->
+		<property name="informeNuevo" ref="miInforme"></property>
+	</bean>
+
+	<!-- creamos un bean para la inyeccion de dependencias -->
+	<bean id="miInforme" class="com.eduit.clase1.entidades.Informe">
+	</bean>
+
+
+</beans>
